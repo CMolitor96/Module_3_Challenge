@@ -30,10 +30,16 @@ function generatePassword() {
     }
 
     var password = "";
-    for (var i=0; i <= passwordLength; i++) {
-      password = acceptedCharacters[Math.floor(Math.random() * passwordLength)];
-    }
-    console.log(password);
+    console.log(acceptedCharacters);
+      for (var i = 0; i < passwordLength; i++) {
+        randomNumber = Math.floor(Math.random() * acceptedCharacters.length);
+        password += acceptedCharacters.charAt(randomNumber);
+      }
+    
+    // for (var i = 0; i <= passwordLength; i++) {
+    //   password = acceptedCharacters[Math.floor(Math.random() * passwordLength)];
+    // }
+    // console.log(password);
     return password;
 
     //What if you had an array with numeric, upper, lower, and special
