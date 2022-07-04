@@ -1,11 +1,19 @@
 // Assignment code here
 function generatePassword() {
   alert('Welcome to the random password generator, please answer the following prompts to customize your new password');
-  var passwordLength = prompt("Please enter how many characters you would like your password from 8-128");
-  console.log(passwordLength);
+  var passwordLength = prompt("Please enter how many characters you would like your password from 8-128.");
+  //To make sure password length was being stored correctly
+  // console.log(passwordLength);
+  //Added a cancel option to generating a random password
+  if (!passwordLength) {
+    return;
+  }
     while (passwordLength < 8 || passwordLength > 128) {
       alert("You may only have a password character length between 8-128");
-      var passwordLength = prompt("Please enter how many characters you would like your password from 8-128");
+      var passwordLength = prompt("Please enter how many characters you would like your password from 8-128.");
+        if (!passwordLength) {
+          return;
+        }
     }
   var acceptedCharacters = "";
   var lowerCase = confirm('Would you like to include lower case characters?');
@@ -28,32 +36,20 @@ function generatePassword() {
       //include special characters
       acceptedCharacters += "!@#$%^&*()+<>?/`~";
     }
+    if (!acceptedCharacters) {
+      alert("Your password must inlcude either lower case, uppercase, numeric, or special characters. Please choose at least one option while generating password.");
+      return;
+    }
 
     var password = "";
-    console.log(acceptedCharacters);
+    //Added this console.log to check if acceptedCharacters was actually containing the characters specified
+    // console.log(acceptedCharacters);
       for (var i = 0; i < passwordLength; i++) {
         randomNumber = Math.floor(Math.random() * acceptedCharacters.length);
         password += acceptedCharacters.charAt(randomNumber);
       }
     
-    // for (var i = 0; i <= passwordLength; i++) {
-    //   password = acceptedCharacters[Math.floor(Math.random() * passwordLength)];
-    // }
-    // console.log(password);
     return password;
-
-    //What if you had an array with numeric, upper, lower, and special
-    //another array for numeric, upper, and lower
-    //another array for numeric and upper
-    //and a final array just for numeric
-    //and then randomize the array
-    //this wont work if user input is 100 and array length is only 10
-    //maybe a for loop with if statement inside and just have one array with every possible character in it
-    //and loop thru as many times as user said and eliminate certain characters depending on user input
-    // numeric = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-    // numericUpper = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-    // numericUpperLower = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-    // numericUpperLowerSpecial = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '<', '>', '/', '?', '~', '`'];
 }
 
 // Get references to the #generate element
